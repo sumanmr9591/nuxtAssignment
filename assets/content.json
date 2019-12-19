@@ -1,0 +1,113 @@
+{
+  "header": {
+    "logo": "ANSOR CALDER",
+    "firstText": "Free Shipping & Return in the US. | Ships Globally.",
+    "secondText": [
+      {
+        "text": "About Us"
+      },
+      {
+        "text": "Need Help?"
+      }
+    ],
+    "navLinks": [
+      {
+        "text": "Wallets"
+      },
+      {
+        "text": "Bags"
+      },
+      {
+        "text": "Accessories"
+      },
+      {
+        "text": "Best Sellers"
+      }
+    ]
+  },
+  "footer": {
+    "newsLetter": "Sign Up to Newsletter",
+    "firstText": "Privacy Policy | Terms & Conditions |",
+    "secondText": "Copyright @2019 Ansor Calder",
+    "aboutUs": {
+      "name": "About Us",
+      "li": [
+        {
+          "text": "Our Story"
+        },
+        {
+          "text": "Giving Back"
+        },
+        {
+          "text": "The system"
+        },
+        {
+          "text": "Affiliate Program"
+        },
+        {
+          "text": "Wholesale and Corporate Gifting"
+        },
+        {
+          "text": "Blog"
+        },
+        {
+          "text": "Press"
+        }
+      ]
+    },
+    "customerService": {
+      "name": "Customer Service",
+      "li": [
+        {
+          "text": "Contact Us"
+        },
+        {
+          "text": "Shipping"
+        },
+        {
+          "text": "Returns"
+        },
+        {
+          "text": "Frequently Asked Questions"
+        },
+        {
+          "text": "Product Care"
+        },
+        {
+          "text": "Warranty"
+        }
+      ]
+    },
+    "social": {
+      "name": "Social",
+      "li": [
+        {
+          "text": "Facebook"
+        },
+        {
+          "text": "Instagram"
+        },
+        {
+          "text": "Twitter"
+        },
+        {
+          "text": "Pinterest"
+        },
+        {
+          "text": "You Tube"
+        }
+      ]
+    }
+  },
+  "box": {
+    "firstPart": "Anson Calder brings old-world craftsmanship to the USA,",
+    "secondPart": "showing off clean, modern styling, and offering tons of options",
+    "thirdPart": "to customize each bag to fit your everyday carry"
+  },
+  "maker": {
+    "firstPart": "Anson Calder makes refined leather goods and",
+    "secondPart": "accessories that only get better with age. We mix",
+    "thirdPart": "refine French materials with contemporary design",
+    "fourthPart": "features for your comfort."
+  },
+}

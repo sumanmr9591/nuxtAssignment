@@ -1,0 +1,8 @@
+@mixin design-tokens--() {
+  // Required.
+  // Using font as CSS variables, to reduce size of generated CSS.
+  // If you want to support IE, set $can-use-css-variables to false.
+  @if ($can-use-css-variables) {
+    @include fonts--();
+  }
+}

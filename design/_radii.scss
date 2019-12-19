@@ -1,0 +1,32 @@
+/// @access private
+$radii: (
+  'button': 0,
+  'card': 0,
+
+  // Default radius.
+  'fallback': 0,
+);
+
+/// Get radius radius
+/// @param {string} $element - Name of the element.
+@function radius($element: 'fallback') {
+  @return get-token($radii, $element);
+}
+
+/// Get radius as CSS Variables.
+/// @param {string} $token - Name of radius.
+@function var-radius($token) {
+  @return var-token($map: $radii, $token: $token);
+}
+
+/// Mixin to unpack all radius tokens. Similar behavior to colors--()
+/// @link https://www.oddbird.net/accoutrement/docs/color-vars.html#mixin--colors--
+@mixin radii--() {
+  @include tokens--($map: $radii, $prefix: 'radius-');
+}
+
+/// Mixin to unpack one radius token. Similar behavior to color--()
+/// @link https://www.oddbird.net/accoutrement/docs/color-vars.html#mixin--color--
+@mixin radius--($name) {
+  @include token--($map: $radii, $prefix: 'radius-')
+}

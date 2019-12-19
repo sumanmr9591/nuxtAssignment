@@ -1,0 +1,110 @@
+/// Shorthand mixin for offset positioning
+/// @param {String} $position - Either `relative`, `absolute` or `fixed`
+/// @param {Length} $top [null] - Top offset
+/// @param {Length} $right [null] - Right offset
+/// @param {Length} $bottom [null] - Bottom offset
+/// @param {Length} $left [null] - Left offset
+@mixin position($position, $top: null, $right: null, $bottom: null, $left: null) {
+  position: $position;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+@mixin flex($direction: null, $align-items: null, $justify-content: null, $flex-wrap: null) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align-items;
+  justify-content:$justify-content;
+  flex-wrap: $flex-wrap;
+}
+
+@mixin display($display: null){
+  display: $display;
+
+}
+
+@mixin item($flex: null, $order: null){
+  flex: $flex;
+  order: $order;
+}
+
+/// Shorthand mixin for absolute positioning
+/// Serves as an alias for `position(absolute, ...)`
+/// @param {Arglist} $args - Offsets
+/// @require {mixin} position
+@mixin absolute($args...) {
+  @include position(absolute, $args...);
+}
+
+/// Shorthand mixin for relative positioning
+/// Serves as an alias for `position(relative, ...)`
+/// @param {Arglist} $args - Offsets
+/// @require {mixin} position
+@mixin relative($args...) {
+  @include position(relative, $args...);
+}
+
+/// Shorthand mixin for fixed positioning
+/// Serves as an alias for `position(fixed, ...)`
+/// @param {Arglist} $args - Offsets
+/// @require {mixin} position
+@mixin fixed($args...) {
+  @include position(fixed, $args...);
+}
+
+
+/// generic transform
+@mixin transform($transforms) {
+  transform: $transforms;
+}
+/// rotate
+@mixin rotate ($deg) {
+  @include transform(rotate(#{$deg}deg));
+}
+
+/// scale
+@mixin scale($scale) {
+	@include transform(scale($scale));
+}
+/// translate
+@mixin translate ($x, $y) {
+  @include transform(translate($x, $y));
+}
+/// skew
+@mixin skew ($x, $y) {
+  @include transform(skew(#{$x}deg, #{$y}deg));
+}
+
+///transform origin
+@mixin transform-origin ($origin) {
+  transform-origin: $origin;
+}
+
+/// Shorthand mixin for center positioning
+/// @param {Arglist} $args - Offsets
+/// @require {mixin} position
+@mixin center {
+  @include position(absolute, 50%, null , null, null );
+  @include translate(0, -50%);
+}
+
+/// Shorthand mixin for block center
+@mixin center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/// Shorthand mixin for text align
+/// @param {string} $token - One of keys of $typography map above.
+$text: (
+  'left': left,
+  'right': right,
+  'center': center,
+);
+
+@mixin text($token: 'left') {
+  text-align: get-token($text, $token);
+}

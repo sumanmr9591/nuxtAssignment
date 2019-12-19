@@ -1,0 +1,30 @@
+/// @access private
+$shadows: (
+  'heavy': 0 0 size('medium', 'px') rgba(0, 0, 0, 0.5),
+  // Default shadow.
+  'fallback': none,
+);
+
+/// Get shadow
+/// @param {string} $token - Name of shadow.
+@function shadow($token: 'fallback') {
+  @return get-token($shadows, $token);
+}
+
+/// Get shadow as CSS Variables.
+/// @param {string} $token - Name of shadow.
+@function var-shadow($token) {
+  @return var-token($map: $shadows, $token: $token);
+}
+
+/// Mixin to unpack all shadow tokens. Similar behavior to colors--()
+/// @link https://www.oddbird.net/accoutrement/docs/color-vars.html#mixin--colors--
+@mixin shadows--() {
+  @include tokens--($map: $shadows, $prefix: 'shadow-');
+}
+
+/// Mixin to unpack one shadow token. Similar behavior to color--()
+/// @link https://www.oddbird.net/accoutrement/docs/color-vars.html#mixin--color--
+@mixin shadow--($name) {
+  @include token--($map: $shadows, $prefix: 'shadow-')
+}

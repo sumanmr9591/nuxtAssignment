@@ -1,0 +1,66 @@
+$ratios: (
+  'ratio': 0.25,
+);
+
+/// @link https://www.oddbird.net/accoutrement/docs/scale.html
+$sizes: (
+  'root': 16px,
+
+  // default spacings for paddings and margins.
+  'large': '#root' ('ratio': 1 / 3),
+  'medium': '#root' ('ratio': 1 / 2),
+  'small': '#root' ('ratio': 1),
+
+  'base': 5px,
+  'xxs': '#base' ('times': 2), // 10px;
+  'xs': '#base' ('times': 4), // 20px;
+  's': '#base' ('times': 6), // 30px;
+  'm': '#base' ('times': 8), // 40px;
+  'l': '#base' ('times': 10), // 50px;
+  'xl': '#base' ('times': 12), // 60px;
+  'xxl': '#base' ('times': 14), // 70px;
+  'xxxl': '#base' ('times': 16), // 80px;
+  'xxxxl': '#base' ('times': 20), // 100px;
+
+  //
+  // Page Responsive sizes
+  // =====================
+  'page': 20rem,
+  'page-mobile-large': '#page' ('times':2),
+  'page-tablet': '#page' ('times': 2.4),
+  'page-tablet-large': '#page' ('times': 3.2),
+  'page-desktop': '#page' ('times': 3.6875),
+  'page-desktop-large': '#page' ('times': 4.5),
+);
+
+// Spacing function
+@function spacing($n) {
+  @return size('base') * $n;
+}
+
+/// @access private
+@mixin spacing($type: 'padding', $top: null, $right: null, $bottom: null, $left: null, $all: null) {
+  @if (type-of($value: $all) == 'null') {
+    #{$type}-top: size($top);
+    #{$type}-right: size($right);
+    #{$type}-bottom: size($bottom);
+    #{$type}-left: size($left);
+  } @else {
+    #{$type}: size($all);
+  }
+}
+
+/// Mixin to unpack all spacing types
+@mixin padding($top: null, $right: null, $bottom: null, $left: null, $all: null) {
+  @include spacing($type: 'padding', $top: $top, $right: $right, $bottom: $bottom, $left: $left, $all: $all);
+}
+
+@mixin margin($top: null, $right: null, $bottom: null, $left: null, $all: null) {
+  @include spacing($type: 'margin', $top: $top, $right: $right, $bottom: $bottom, $left: $left, $all: $all);
+}
+
+/// Mixin for size of block ( width and height )
+@mixin blocksize($width, $height: $width) {
+  width: $width;
+  height: $height;
+}

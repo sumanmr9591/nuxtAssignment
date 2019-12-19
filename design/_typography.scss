@@ -1,0 +1,161 @@
+/// @access private
+/// @link https://www.oddbird.net/accoutrement/docs/type.html
+$font-path: '../assets/fonts/';
+$fonts: (
+  'sans': (
+    'name': 'SofiaPro',
+    'formats': 'woff2' 'woff',
+    'stack': ("Arial", sans-serif),
+    // Following are examples for loading fonts from S3.
+    // 'normal': 'https://fonts.googleapis.com/css?family=Cutive+Mono&display=swap',
+    // 'italic': 'https://s3-us-west-1.amazonaws.com/rothys/fonts/GillSansMTPro-BookItalic',
+    'normal': 'Sofia85Pro-Regular',
+    'semibold':'SofiaPro-SemiBold',
+    'bold':  'Sofia85Pro-Bold',
+  ),
+  'serif': (
+    'name': 'OptimaLTPro',
+    'formats': 'woff2' 'woff',
+    'stack': ("Arial", serif),
+    // Following are examples for loading fonts from S3.
+    // 'normal': 'https://s3-us-west-1.amazonaws.com/rothys/fonts/PublicoBanner-Light',
+    // 'italic': 'https://s3-us-west-1.amazonaws.com/rothys/fonts/PublicoBanner-LightItalic',
+    'normal': 'OptimaLTPro-Roman',
+    'bold':  'OptimaLTPro-Bold',
+  ),
+
+  'primary': '#sans',
+  'secondary': '#serif',
+);
+
+
+/// @access private
+/// @see $fonts - For list of 'font' names.
+$typography: (
+  'type-900': (
+    'font': 'secondary',
+    'size': 121px,
+    'height': 131px,
+    'weight': normal,
+    'space': 0.5px,
+  ),
+
+  'heading': '#type-900',
+
+  'type-800': (
+    'font': 'secondary',
+    'size': 81px,
+    'height': 64px,
+    'weight': normal,
+    'space': 0.5px,
+  ),
+
+  'type-700': (
+    'font': 'secondary',
+    'size': 54px,
+    'height': 62px,
+    'weight': normal,
+    'space': 0.5px,
+  ),
+
+  'type-600': (
+    'font': 'secondary',
+    'size': 36px,
+    'height': 44px,
+    'weight': normal,
+    'space': 0.5px,
+  ),
+
+  'type-500': (
+    'font': 'primary',
+    'size': 36px,
+    'height': 44px,
+    'weight': normal,
+    'space': 0.5px,
+  ),
+
+  'type-400': (
+    'font': 'primary',
+    'size': 24px,
+    'height': 32px,
+    'weight': normal,
+    'space': 0.5px,
+  ),
+
+  'type-300': (
+    'font': 'primary',
+    'size': 16px,
+    'height': 24px,
+    'weight': normal,
+    'space': 0.5px,
+  ),
+
+  'type-200': (
+    'font': 'primary',
+    'size': 14px,
+    'height': 20px,
+    'weight': normal,
+    'space': 0.58px,
+  ),
+
+  'type-100': (
+    'font': 'primary',
+    'size': 12px,
+    'height': 16px,
+    'weight': normal,
+    'space': 0.5px,
+  ),
+
+  'body': (
+    'font': 'primary',
+    'size': 16px,
+    'height': 24px,
+    'weight': normal,
+    'space': 0.5px,
+  ),
+
+  'button-regular': (
+    'font': 'primary',
+    'size': 16px,
+    'height': 1,
+    'weight': semibold,
+    'space': 3px,
+  ),
+
+  'button-small': (
+    'font': 'primary',
+    'size': 12px,
+    'height': 1,
+    'weight': semibold,
+    'space': 3px,
+  ),
+);
+
+@function var-font-family($token, $fallback: false) {
+  @if ($can-use-css-variables) {
+    @return var-font($font: $token, $fallback: $fallback);
+  } @else {
+    @return font-family($token);
+  }
+}
+
+/// Set text style.
+/// @param {string} $token - One of keys of $typography map above.
+@mixin use-text-style($token: 'body') {
+  $type: get-token($typography, $token);
+
+  font-family: var-font-family(get-token($type, 'font'));
+  font-size: get-token($type, 'size');
+  font-weight: get-token($type, 'weight');
+  line-height: get-token($type, 'height');
+  letter-spacing: get-token($type, 'space');
+}
+
+///  text style update- only font size and line height
+/// @param {string} $token - One of keys of $typography map above.
+@mixin update-text-style($token: 'body') {
+  $type: get-token($typography, $token);
+  font-size: get-token($type, 'size');
+  line-height: get-token($type, 'height');
+}
+

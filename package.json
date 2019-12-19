@@ -1,0 +1,23 @@
+{
+  "name": "my-first-nuxt-app",
+  "version": "1.0.0",
+  "description": "getting started with Nuxt",
+  "author": "Suman M R",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.3.6",
+    "@nuxtjs/pwa": "^3.0.0-0",
+    "accoutrement": "^2.1.2",
+    "nuxt": "^2.0.0",
+    "sass": "^1.23.7",
+    "sass-loader": "^8.0.0",
+    "scss": "^0.2.4"
+  },
+  "devDependencies": {}
+}

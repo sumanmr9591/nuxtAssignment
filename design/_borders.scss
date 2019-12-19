@@ -1,0 +1,63 @@
+/// @access private
+$borders: (
+  'primary': 1px solid color('primary'),
+  'primary-thick': 2px solid color('primary'),
+  'secondary': 1px solid color('secondary'),
+  'light': 2px solid color('-champagne'),
+  'navy-blue': 2px solid color('primary-200'),
+  /// Add inline documentation to explain
+  // -- HELPER FUNCTION/MIXINS --
+  'highlight': 1px solid color('primary'),
+  // Default border. 'fallback': none,
+);
+
+// -- HELPER FUNCTION/MIXINS --
+
+/// Get border
+/// @param {string} $token - Name of border.
+@function border($token: 'primary') {
+  @return get-token($borders, $token);
+}
+
+/// Get border as CSS Variables.
+/// @param {string} $token - Name of border.
+@function var-border($token) {
+  @return var-token($map: $borders, $token: $token);
+}
+
+/// Mixin to unpack all border tokens. Similar behavior to colors--()
+/// @link https://www.oddbird.net/accoutrement/docs/color-vars.html#mixin--colors--
+@mixin borders--() {
+  @include tokens--($map: $borders, $prefix: 'border-');
+}
+
+/// Mixin to unpack one border token. Similar behavior to color--()
+/// @link https://www.oddbird.net/accoutrement/docs/color-vars.html#mixin--color--
+@mixin border--($name) {
+  @include token--($map: $borders, $prefix: 'border-', $token: $name);
+}
+
+/// @access private
+@mixin border($type: 'primary', $top: null, $right: null, $bottom: null, $left: null, $all: null) {
+  @if (type-of($value: $all) == 'all') {
+    border: border(#{$type});
+  }@else if ($top == 'top'){
+    border-top: border(#{$type});
+  }@else if ($right == 'right'){
+    border-right: border(#{$type});
+  }@else if ($left == 'left'){
+    border-left: border(#{$type});
+  }@else if ($bottom == 'bottom'){
+    border-bottom: border(#{$type});
+  }
+}
+
+/// Mixin to unpack all borders
+
+@mixin border-primary($top: null, $right: null, $bottom: null, $left: null, $all: null) {
+  @include border($type: 'primary', $top: $top, $right: $right, $bottom: $bottom, $left: $left, $all: $all);
+}
+
+@mixin border-secondary($top: null, $right: null, $bottom: null, $left: null, $all: null) {
+  @include border($type: 'secondary', $top: $top, $right: $right, $bottom: $bottom, $left: $left, $all: $all);
+}

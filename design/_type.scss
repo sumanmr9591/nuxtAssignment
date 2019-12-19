@@ -1,0 +1,16 @@
+// Type
+// ====
+
+$link: '&:link, &:visited';
+$focus: '&:focus, &:hover, &:active';
+
+// Use #{$focus}
+
+/// Mixin for placeholder
+@mixin input-placeholder {
+  &.placeholder { @content; }
+  &:-moz-placeholder { @content; }
+  &::-moz-placeholder { @content; }
+  &:-ms-input-placeholder { @content; }
+  &::-webkit-input-placeholder { @content; }
+}
